@@ -1,0 +1,616 @@
+@import "colors.styl"
+@font-face
+  font-family 'Gotham'
+  src url('../fonts/Gotham Bold Regular.ttf')
+  font-weight bold
+
+@font-face
+  font-family 'Gotham'
+  src url('../fonts/Gotham-Light.ttf')
+
+.drop-shadow
+  position relative
+  display inline-block
+
+  &:before
+    position absolute
+    content  ''
+    left  5%
+    right @left
+    top @left
+    bottom @left
+    box-shadow 10px 25px 124px 0 rgba(black,0.7)
+  img
+    position relative
+    max-width 100%
+
+.text-success
+  color template_green !important
+
+.font-10
+  font-size 10px
+.font-strong
+  font-weight bold
+.line
+  position relative
+  &.alone
+    display inline-block
+    height 6px
+
+    &.line-right
+      &:before
+        right 0 !important
+        left 0 !important
+
+    &.line-left
+      &:before
+        left 0 !important
+        right 0 !important
+  &.big
+    &:before
+      width 50px
+    &.line-right
+      &:before
+        right -70px
+    &.line-left
+      &:before
+        left -70px
+
+  &.line-right
+    &:before
+      right -40px
+  &.line-left
+    &:before
+      left -40px
+
+  &:before
+    position absolute
+    content ''
+    height 6px
+    width 25px
+    top 50%
+    border-radius 10px
+    box-shadow: 0 0 10px 0 rgba(black, 0.1);
+
+  &.yellow
+    &:before
+      background-color template_yellow
+  &.red
+    &:before
+      background-color template_red
+  &.blue
+    &:before
+      background-color template_blue
+  &.green
+    &:before
+      background-color template_green
+
+
+
+html, body
+  font-family 'Gotham'
+  min-height 100%
+  overflow-x hidden
+.btn
+  border none
+  border-radius 50px
+  text-transform uppercase
+  padding 10px 40px
+  font-weight bold
+  transition 0.2s all
+  box-shadow 0 3px 20px 0 rgba(#666,0.2)
+  &:hover
+    box-shadow none
+  &.btn-semi
+    padding 10px 25px
+  &.btn-primary
+    background-color template_blue
+  &.btn-danger
+    background-color template_red
+  &.btn-success
+    background-color template_green
+.btn-default
+  &:hover,&.active
+    background-color white
+
+canvas
+  position absolute
+  top 0
+  bottom 0
+  left 0
+  width 100%
+  height 100%
+
+header
+  position relative
+  height 850px
+  width 100%
+
+  .container
+    position relative
+
+  .up-image
+    position absolute
+    right -193px
+    bottom -116%
+
+  .main-nav
+    margin-top 20px
+
+  .main-menu
+    right 0
+    margin-top 16px
+    height 100%
+    .menu-item:not(:first-child)
+      margin-left 36px
+    .menu-item
+      display inline-block
+      font-size 14px
+      vertical-align middle
+      text-decoration none
+      font-weight bold
+      &:not(.btn)
+        color white
+      &.btn
+        padding 7px 30px !important
+        font-size 12px
+
+  .main-content
+    .row,figure
+      position relative
+    .ipad,.iphone
+      transition .2s all
+    .ipad
+      transform rotate(-13deg)
+      margin-left -12px
+      margin-top 32px
+      max-width 107%
+
+    .iphone
+      position absolute
+      right 0
+      bottom 0
+      margin-right -84px
+      margin-bottom -88px
+      transform rotate(-5deg)
+      max-width 60%
+      &:before
+        box-shadow 10px 20px 100px 0 rgba(black,0.7)
+
+    .content-right
+      padding-left 133px
+      transition 0.2s all
+      color white
+
+      .text-content
+        margin-top 135px
+        display inline-block
+
+      .title,.subtitle
+        line-height 0.9
+      .subtitle
+        margin-top 0
+        font-size 4rem
+      .title
+        margin 0
+        font-size 6rem
+        font-weight bold
+
+      .btn-subscribe
+        font-weight bold
+        margin-top 35px
+        margin-bottom 15px
+      p
+        font-size 10px
+
+
+
+.section-subtitle,.section-title
+  text-align center
+
+.section-title
+  font-weight bold
+  padding-top 60px
+  position relative
+
+  &:before,&:after
+    position absolute
+    content ''
+    height 6px
+    top 0
+    border-radius 5px
+  &:before
+    background template_red
+    left calc(50% - 30px)
+    width 25px
+  &:after
+    width 50px
+    right calc(50% - 60px)
+    background template_blue
+  &.blue-green
+    &:before
+      background template_blue
+    &:after
+      background template_green
+
+.section-subtitle
+  font-weight bold
+  color template_gray
+
+.divider
+  display block
+  margin 0 auto
+  height 1px
+  max-width 400px
+  position relative
+  background template_gray
+  &:before
+    position absolute
+    content ''
+    background template_gray
+    width 80px
+    border-radius 10px
+    height 4px
+    left calc(50% - 40px)
+    top -1.5px
+
+.section-subscription
+  .logos
+    text-align center
+    margin-top 60px
+    margin-bottom @margin-top
+    & > li
+      padding-left 54px
+    img
+      max-height 50px
+  .features
+    margin-top 60px
+    margin-bottom @margin-top
+    line-height 2
+    font-size 13px
+    ul
+      list-style-image url('../img/disney-icon.png') !important
+      li
+        padding-left 5px
+  .btn-primary
+    margin-bottom 20px
+  p
+    font-weight bold
+    color template_gray
+    font-size 10px
+
+.section-brave
+  position relative
+  color white
+  background-image url('../img/braven.jpg')
+  background-repeat no-repeat
+  background-position top 15% right
+  background-size 62%
+  padding-top 110px
+  padding-bottom 130px
+  margin-top 60px
+  margin-bottom 10px
+
+  .btn
+    margin-top 30px
+  .section-content
+    padding-left 80px
+  .container
+    position relative
+  .character
+    position absolute
+    max-width 280px
+    top -276px
+    left -60px
+
+.section-discover
+  .icons
+    margin-top 60px
+    margin-bottom 60px
+    text-align center
+    li
+      padding 0
+      position relative
+      margin-right -2px
+      &:hover
+        z-index 1
+      &:after,&:before,&>a:after,&>a:before,& span:after,& span:before
+        position absolute
+        width 15px
+        height 15px
+        border-color template_gray
+        border-style solid
+        content ''
+
+      &:before
+        top 0
+        left 0
+        border-width 2px 0 0 2px
+      &:after
+        top 0
+        right 0
+        border-width 2px 2px 0 0
+
+    a
+      display block
+      padding 40px 85px
+      text-transform uppercase
+      font-weight bold
+      transition 0.2s all
+      text-decoration none
+      color template_gray
+      &:hover
+        cursor pointer
+        color black
+        padding-bottom 38px
+        border-bottom 2px solid template_blue
+        background-color rgba(template_blue,0.1)
+        &:after,&:before
+          border-color template_blue
+        span:before,span:after
+          display block
+          border-color template_blue
+        span:before
+          left 0
+          bottom -13px
+          border-width 2px 0 0 2px
+        span:after
+          right 0
+          bottom -13px
+          border-width 2px 2px 0 0
+
+      &:before
+        bottom 0
+        right 0
+        border-width 0 2px 2px 0
+      &:after
+        bottom 0
+        left 0
+        border-width 0 0 2px 2px
+      img
+        display block
+        margin-bottom 10px
+      span:before,span:after
+        display: none
+
+.section-movies
+  margin-top 60px
+  position relative
+  .slider-background
+    position relative
+  .movies-container
+    max-width 1600px
+    margin 0 auto
+    padding 100px 15px
+    padding-bottom 130px
+    .movies-navigation
+      position relative
+      text-align center
+      bottom -20px
+
+      .left-navigation,.right-navigation
+        transition 0.3s opacity
+        display inline-block
+        position relative
+        opacity 0.7
+        height 15px
+        width 60px
+        &:hover:not(.disabled)
+          cursor pointer
+          opacity 1
+        &:after,&:before
+          position absolute
+          content ''
+        &:before
+          background white
+          height 2px
+          width 100%
+          left 0
+          top 0
+          right 0
+          border-right 15px solid transparent;
+
+      .left-navigation
+        &:after
+          left -2px
+          border-top 15px solid white;
+          border-left 15px solid transparent;
+
+      .right-navigation
+        margin-left 30px
+        &:after
+          right -2px
+          border-top 15px solid white;
+          border-right 15px solid transparent;
+
+    .slider
+      .owl-stage-outer
+        overflow inherit
+      .item
+        position relative
+        transition 0.3s ease-in-out
+        padding 15px
+
+        &:hover
+          cursor pointer
+          box-shadow 0 10px 60px 0 rgba(black,0.3)
+          background-color template_red
+          img
+            box-shadow none
+          .play
+            display block !important
+        img
+          transition 0.3s ease-in-out
+          box-shadow 0 10px 60px 0 rgba(black,0.3)
+        .play,.play i
+          border-radius 50%
+        .play
+          animation-duration .3s !important
+          display none
+          position absolute
+          z-index 5
+          bottom -40px
+          right @bottom
+          padding 6px
+          height 110px
+          width @height
+          color template_red
+          background rgba(white,0.5)
+          box-shadow 0 10px 60px 0 rgba(black,0.3)
+          i
+            padding 38px
+            font-size 20px
+            background white
+
+  .legend
+    margin-top 60px
+    padding-bottom 150px
+    img
+      margin-top 20px
+    h2
+      display inline-block
+    p
+      margin 0
+
+.section-trail
+  margin-top 70px
+  .btn
+    margin-bottom 20px
+
+// Footer
+footer
+  color white
+  position relative
+  padding-top 150px
+  margin-top 150px
+  padding-bottom 80px
+
+  .container
+    position relative
+  figure
+    position absolute
+    top -400px
+    left -78px
+    max-width 300px
+  canvas
+    background template_red
+  .nav-links
+    margin-bottom 40px
+    li
+      padding-right 10px
+    li:not(:first-child)
+      padding-left 15px
+      position relative
+      &:before
+        content ""
+        position absolute
+        left 0
+        width 3px
+        height @width
+        background white
+        opacity .7
+        border-radius 5px
+        top calc(50% - 2px)
+    a
+      font-weight bold
+      text-decoration none
+      color white
+      opacity 0.7
+      &:active,&:hover
+        opacity 1
+  .logo
+    margin-bottom 15px
+    max-height 50px
+    position relative
+  .copyrights
+    font-weight bold
+    font-size 12px
+    opacity 0.7
+
+
+// Media Queries
+@media (max-width: 1200px)
+  header
+    height 750px
+    .logo img
+      width 225px
+    .main-content
+      .content-right
+        padding-left 125px
+        .subtitle
+          font-size 3rem
+        .title
+          font-size 4rem
+        .btn-subscribe
+          font-size 12px
+    .up-image
+      right -210px
+      bottom -134%
+      transform scale(0.8,0.8)
+  .section-discover
+    .icons
+      a
+        padding 40px 65px
+        &:hover
+          padding-bottom 38px
+
+@media (max-width: 990px)
+  header
+    height 610px
+    .main-content
+      .iphone
+        margin-bottom -63px
+        margin-right -53px
+      .content-right
+        padding-left 73px
+        .text-content
+          margin-top 72px !important
+
+    .up-image
+      transform scale(0.7,0.7)
+  .section-discover
+    .icons
+      a
+        padding 20px 40px
+        &:hover
+          padding-bottom 18px
+
+@media (max-width: 766px)
+  .section-subscription
+    .list-unstyled
+      display block
+      max-width 300px
+      margin 0 auto
+  header
+    height 600px
+    .main-content
+      text-align center
+      .content-right
+        padding inherit
+
+    .up-image
+      display none
+
+  .section-brave
+    margin-top 130px
+    background none
+    .section-content
+      display block
+      max-width 340px
+      margin 0 auto
+    .character
+      left calc(50% - 140px)
+
+
+@media (max-width:700px)
+  header
+    .logo,.main-menu
+      display block
+      text-align center
+      float none !important
+    .main-menu
+      .menu-item:not(:first-child)
+        margin-left 20px
+
+
+
