@@ -174,15 +174,14 @@ header .main-content .row,
 header .main-content figure {
   position: relative;
 }
-header .main-content .ipad,
-header .main-content .iphone {
-  transition: 0.2s all;
-}
 header .main-content .ipad {
   transform: rotate(-13deg);
   margin-left: -12px;
   margin-top: 32px;
   max-width: 107%;
+}
+header .main-content .ipad.animate {
+  animation: 500ms rotateInIpad ease-in-out;
 }
 header .main-content .iphone {
   position: absolute;
@@ -196,10 +195,23 @@ header .main-content .iphone {
 header .main-content .iphone:before {
   box-shadow: 10px 20px 100px 0 rgba(0,0,0,0.7);
 }
+header .main-content .iphone.animate {
+  animation: 500ms rotateInIphone ease-in-out;
+}
 header .main-content .content-right {
   padding-left: 133px;
   transition: 0.2s all;
   color: #fff;
+}
+header .main-content .content-right .line-left:before {
+  opacity: 0;
+}
+header .main-content .content-right .line-left.show:before {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  animation-name: fadeInLeft;
 }
 header .main-content .content-right .text-content {
   margin-top: 135px;
@@ -710,5 +722,85 @@ footer .copyrights {
   }
   header .main-menu .menu-item:not(:first-child) {
     margin-left: 20px;
+  }
+}
+@-moz-keyframes rotateInIpad {
+  0% {
+    transform: translate(-30%, 30%) rotate(-30deg);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-13deg);
+  }
+}
+@-webkit-keyframes rotateInIpad {
+  0% {
+    transform: translate(-30%, 30%) rotate(-30deg);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-13deg);
+  }
+}
+@-o-keyframes rotateInIpad {
+  0% {
+    transform: translate(-30%, 30%) rotate(-30deg);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-13deg);
+  }
+}
+@keyframes rotateInIpad {
+  0% {
+    transform: translate(-30%, 30%) rotate(-30deg);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-13deg);
+  }
+}
+@-moz-keyframes rotateInIphone {
+  0% {
+    transform: translate(-30%, 30%) rotate(-25deg);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-5deg);
+  }
+}
+@-webkit-keyframes rotateInIphone {
+  0% {
+    transform: translate(-30%, 30%) rotate(-25deg);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-5deg);
+  }
+}
+@-o-keyframes rotateInIphone {
+  0% {
+    transform: translate(-30%, 30%) rotate(-25deg);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-5deg);
+  }
+}
+@keyframes rotateInIphone {
+  0% {
+    transform: translate(-30%, 30%) rotate(-25deg);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-5deg);
   }
 }

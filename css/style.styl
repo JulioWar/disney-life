@@ -158,13 +158,15 @@ header
   .main-content
     .row,figure
       position relative
-    .ipad,.iphone
-      transition .2s all
+    // .ipad,.iphone
+    //   transition .2s all
     .ipad
       transform rotate(-13deg)
       margin-left -12px
       margin-top 32px
       max-width 107%
+      &.animate
+          animation 500ms rotateInIpad ease-in-out
 
     .iphone
       position absolute
@@ -177,10 +179,23 @@ header
       &:before
         box-shadow 10px 20px 100px 0 rgba(black,0.7)
 
+      &.animate
+          animation 500ms rotateInIphone ease-in-out
+
     .content-right
       padding-left 133px
       transition 0.2s all
       color white
+
+      .line-left
+          &:before
+              opacity 0
+          &.show:before
+              -webkit-animation-duration 1s
+              animation-duration 1s
+              -webkit-animation-fill-mode both
+              animation-fill-mode both
+              animation-name fadeInLeft
 
       .text-content
         margin-top 135px
@@ -601,6 +616,23 @@ footer
     .character
       left calc(50% - 140px)
 
+@keyframes rotateInIpad
+    0%
+        transform translate(-30%, 30%) rotate(-30deg)
+        opacity 0
+
+    100%
+        opacity 1
+        transform rotate(-13deg)
+
+@keyframes rotateInIphone
+    0%
+        transform translate(-30%, 30%) rotate(-25deg)
+        opacity 0
+
+    100%
+        opacity 1
+        transform rotate(-5deg)
 
 @media (max-width:700px)
   header
@@ -611,6 +643,3 @@ footer
     .main-menu
       .menu-item:not(:first-child)
         margin-left 20px
-
-
-

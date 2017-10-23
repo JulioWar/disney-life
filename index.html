@@ -14,12 +14,12 @@
         <header>
             <canvas id="header-bg"></canvas>
             <div class="container">
-                <img src="img/up.png" alt="" class="up-image">
+                <img src="img/up.png" alt="" class="up-image hidden">
                 <div class="main-nav clearfix">
                     <div class="logo pull-left">
-                        <img src="img/logo.png" alt="">
+                        <img src="img/logo.png" class="animated fadeInRight hidden" alt="">
                     </div>
-                    <div class="main-menu pull-right ">
+                    <div class="main-menu pull-right animated fadeInRight hidden">
                         <a href="#" class="menu-item">Buy a Gift</a>
                         <a href="#" class="menu-item">Radeem a Gift</a>
                         <a href="#" class="menu-item"><i class="glyphicon glyphicon-user"></i></a>
@@ -29,22 +29,24 @@
                 <div class="main-content">
                     <div class="row">
                         <div class="col-xs-12 hidden-xs col-sm-7">
-                            <figure class="drop-shadow ipad">
+                            <figure class="drop-shadow ipad animate hidden">
                                 <img src="img/ipad.png" alt="ipad image">
                             </figure>
-                            <figure class="drop-shadow iphone">
+                            <figure class="drop-shadow iphone animate hidden">
                                 <img src="img/iphone.png" alt="iphone image">
                             </figure>
                         </div>
                         <div class="col-xs-12 col-sm-5 content-right">
                             <div class="line yellow big line-left text-content">
-                                <h2 class="subtitle">Unlimited Disney Magic. </h2>
-                                <h1 class="title">Cartoons & Movies</h1>
+                                <h2 class="subtitle animated fadeInRight hidden">Unlimited Disney Magic. </h2>
+                                <h1 class="title animated fadeInRight hidden">Cartoons & Movies</h1>
                             </div>
 
                             <div>
-                                <a class="line blue line-right btn btn-default text-danger btn-subscribe btn-semi">Subscribe now</a>
-                                <p>Now only for &pound;4.99 per month</p>
+                                <a class="line blue line-right btn btn-default text-danger btn-subscribe btn-semi animated fadeInRight hidden">
+                                    Subscribe now
+                                </a>
+                                <p class="animated fadeInRight hidden">Now only for &pound;4.99 per month</p>
                             </div>
                         </div>
                     </div>
@@ -241,7 +243,7 @@
 
         <script src="js/jquery-2.1.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <!--<script src="js/createjs.min.js"></script>-->
+        <script src="js/createjs.min.js"></script>
         <script src="js/owl.carousel.min.js"></script>
         <script src="js/bundle.js"></script>
     </body>

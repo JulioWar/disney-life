@@ -1,5 +1,15 @@
 var header = document.getElementById("header-bg");
 var footer = document.getElementById("footer-bg");
+var stage = new createjs.Stage(header);
+
+var headerShapes = {
+    blueShape: new createjs.Shape(),
+    blueShapePoints: {},
+    redShape: new createjs.Shape(),
+    redShapePoints: {},
+    yellowShape: new createjs.Shape(),
+    yellowShapePoints: {},
+};
 
 // initializing the object with colors of the template
 var colors = {
@@ -14,36 +24,227 @@ var colors = {
 // var circle = new createjs.Shape();
 // circle.graphics.beginFill(colors.red).drawCircle(0, 0, 100);
 
+function createShape(shape, color, points, startX, startY, lines) {
+    shape.graphics.beginFill(color)
+        .moveTo(startX, startY);
+
+    points.point1 = shape.graphics
+        .lineTo(lines[0].x, lines[0].y)
+        .command;
+
+    points.point2 = shape.graphics
+        .lineTo(lines[1].x, lines[1].y)
+        .command;
+
+    points.point3 = shape.graphics
+        .lineTo(lines[2].x, lines[2].y)
+        .command;
+
+    shape.graphics.closePath();
+}
+
+function updatePoints(old, news) {
+    old.forEach( function (point, index) {
+        createjs.Tween.get(point)
+            .to(news[index], 0);
+    });
+}
+
+function showContent() {
+    $('header .logo img, header .main-menu').removeClass('hidden');
+    setTimeout(function() {
+        $('header .content-right .subtitle').removeClass('hidden');
+    }, 200);
+    setTimeout(function() {
+        $('header .content-right .line-left').addClass('show');
+        $('header .content-right .title').removeClass('hidden');
+    }, 300);
+
+    setTimeout(function() {
+        $('header .content-right .btn-subscribe').removeClass('hidden');
+        $('header .content-right .btn-subscribe + p').removeClass('hidden');
+    }, 400);
+
+    setTimeout(function() {
+        $('header .ipad').removeClass('hidden');
+    }, 600);
+
+    setTimeout(function() {
+        $('header .iphone').removeClass('hidden');
+    }, 800);
+}
+
 var initHeader = function (context, width, height) {
     var x = (width / 2) * 0.2;
     var y = (height) * 0.1;
 
-    context.fillStyle = colors.blue;
-    context.beginPath();
-    context.moveTo(0, 0);
-    context.lineTo((width / 2) - 58, 0);
-    context.lineTo((width / 2) + x, height - 170);
-    context.lineTo(0, height);
-    context.closePath();
-    context.fill();
 
-    context.fillStyle = colors.yellow;
-    context.beginPath();
-    context.moveTo(0, (height / 2));
-    context.lineTo((width / 2) + 150, (height / 2) + 80);
-    context.lineTo((width / 2) + x, height - (y + (y / 2)));
-    context.lineTo(0, height);
-    context.closePath();
-    context.fill();
+    var point1 = {},
+        point2 = {},
+        point3 = {};
 
-    context.fillStyle = colors.red;
-    context.beginPath();
-    context.moveTo(width, 0);
-    context.lineTo((width / 2) - 60, 0);
-    context.lineTo((width / 2) + x, height - y);
-    context.lineTo(width, height);
-    context.closePath();
-    context.fill();
+
+    point1.x = (width / 2);
+    point1.y = 0;
+
+    point2.x = (width / 2) + x;
+    point2.y = height - (y + (y / 2));
+
+    point3.x = 0;
+    point3.y = height;
+
+    if (!headerShapes.yellowShapePoints.point1) {
+        var origin = {
+            x: 0,
+            y: 0
+        };
+        createShape(
+            headerShapes.yellowShape,
+            colors.yellow,
+            headerShapes.yellowShapePoints,
+            origin.x,
+            origin.y,
+            [point1, point1, origin]
+        );
+        createjs.Tween.get(headerShapes.yellowShapePoints.point3)
+            .wait(700)
+            .to(point3, 500);
+
+        createjs.Tween.get(headerShapes.yellowShapePoints.point2)
+            .wait(1100)
+            .to(point2, 500);
+        stage.addChild(headerShapes.yellowShape);
+    } else {
+        updatePoints(
+            [
+                headerShapes.yellowShapePoints.point1,
+                headerShapes.yellowShapePoints.point2,
+                headerShapes.yellowShapePoints.point3
+            ],
+            [point1, point2, point3]
+        );
+    }
+
+
+    point1.x = (width / 2);
+    point1.y = 0;
+
+    point2.x = (width / 2) + x;
+    point2.y = (height / 2) + 170;
+
+    point3.x = 0;
+    point3.y = (height/2) + 58;
+
+
+    if (!headerShapes.blueShapePoints.point1) {
+
+        createShape(
+            headerShapes.blueShape,
+            colors.blue,
+            headerShapes.blueShapePoints,
+            0,
+            0,
+            [point1, point1, {x:0, y: 0}]
+        );
+        createjs.Tween.get(headerShapes.blueShapePoints.point3)
+            .to(point3, 600)
+            .call(showContent);
+        createjs.Tween.get(headerShapes.blueShapePoints.point2)
+            .wait(700)
+            .to(point2, 400);
+        stage.addChild(headerShapes.blueShape);
+    } else {
+        updatePoints(
+            [
+                headerShapes.blueShapePoints.point1,
+                headerShapes.blueShapePoints.point2,
+                headerShapes.blueShapePoints.point3,
+            ],
+            [point1, point2, point3]
+        );
+    }
+
+
+    point1.x = width;
+    point1.y = 0;
+
+    point2.x = (width / 2) - 60;
+    point2.y = 0;
+
+    point3.x = (width / 2) + x;
+    point3.y = height - y;
+
+    var point4 = {
+        x: width,
+        y: height
+    };
+
+    if (!headerShapes.redShapePoints.point1) {
+        headerShapes.redShapePoints.point1 = headerShapes.redShape.graphics
+            .beginFill(colors.red)
+            .moveTo(point1.x, point1.y)
+            .command;
+
+        headerShapes.redShapePoints.point2 = headerShapes.redShape.graphics
+            .lineTo(point1.x, point1.y)
+            .command;
+
+        headerShapes.redShapePoints.point3 = headerShapes.redShape.graphics
+            .lineTo(point4.x, point4.y)
+            .command;
+
+        headerShapes.redShapePoints.point4 = headerShapes.redShape.graphics
+            .lineTo(point4.x, point4.y)
+            .command;
+
+        headerShapes.redShape.graphics.closePath();
+
+        createjs.Tween.get(headerShapes.redShapePoints.point2)
+            .to(point2, 400);
+        createjs.Tween.get(headerShapes.redShapePoints.point3)
+            .wait(500)
+            .to(point3, 400);
+
+        stage.addChild(headerShapes.redShape);
+    } else {
+        updatePoints(
+            [
+                headerShapes.redShapePoints.point1,
+                headerShapes.redShapePoints.point2,
+                headerShapes.redShapePoints.point3,
+                headerShapes.redShapePoints.point4
+            ],
+            [point1, point2, point3, point4]
+        );
+    }
+
+    stage.update();
+    // context.fillStyle = colors.blue;
+    // context.beginPath();
+    // context.moveTo(0, 0);
+    // context.lineTo((width / 2) - 58, 0);
+    // context.lineTo((width / 2) + x, height - 170);
+    // context.lineTo(0, height);
+    // context.closePath();
+    // context.fill();
+    //
+    // context.fillStyle = colors.yellow;
+    // context.beginPath();
+    // context.moveTo(0, (height / 2));
+    // context.lineTo((width / 2) + 150, (height / 2) + 80);
+    // context.lineTo((width / 2) + x, height - (y + (y / 2)));
+    // context.lineTo(0, height);
+    // context.closePath();
+    // context.fill();
+    //
+    // context.fillStyle = colors.red;
+    // context.beginPath();
+    // context.moveTo(width, 0);
+    // context.lineTo((width / 2) - 60, 0);
+    // context.lineTo((width / 2) + x, height - y);
+    // context.lineTo(width, height);
+    // context.closePath();
+    // context.fill();
 };
 
 var initFooter = function (context, width, height) {
@@ -265,6 +466,7 @@ $(document).ready(function () {
     });
 
     handleResize(); // First draw
+    createjs.Ticker.addEventListener('tick',stage);
     $('.left-navigation').click(function () {
         owl.trigger('next.owl.carousel');
     });
