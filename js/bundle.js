@@ -52,12 +52,15 @@ function updatePoints(old, news) {
 
 function showContent() {
     $('header .logo img, header .main-menu').removeClass('hidden');
+
     setTimeout(function() {
         $('header .content-right .subtitle').removeClass('hidden');
     }, 200);
     setTimeout(function() {
         $('header .content-right .line-left').addClass('show');
         $('header .content-right .title').removeClass('hidden');
+
+        $('header .up-image').removeClass('hidden');
     }, 300);
 
     setTimeout(function() {
@@ -219,32 +222,6 @@ var initHeader = function (context, width, height) {
     }
 
     stage.update();
-    // context.fillStyle = colors.blue;
-    // context.beginPath();
-    // context.moveTo(0, 0);
-    // context.lineTo((width / 2) - 58, 0);
-    // context.lineTo((width / 2) + x, height - 170);
-    // context.lineTo(0, height);
-    // context.closePath();
-    // context.fill();
-    //
-    // context.fillStyle = colors.yellow;
-    // context.beginPath();
-    // context.moveTo(0, (height / 2));
-    // context.lineTo((width / 2) + 150, (height / 2) + 80);
-    // context.lineTo((width / 2) + x, height - (y + (y / 2)));
-    // context.lineTo(0, height);
-    // context.closePath();
-    // context.fill();
-    //
-    // context.fillStyle = colors.red;
-    // context.beginPath();
-    // context.moveTo(width, 0);
-    // context.lineTo((width / 2) - 60, 0);
-    // context.lineTo((width / 2) + x, height - y);
-    // context.lineTo(width, height);
-    // context.closePath();
-    // context.fill();
 };
 
 var initFooter = function (context, width, height) {

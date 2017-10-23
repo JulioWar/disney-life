@@ -145,6 +145,9 @@ header .up-image {
   right: -193px;
   bottom: -116%;
 }
+header .up-image.animate {
+  animation: 600ms fadeInUpImage ease-in-out;
+}
 header .main-nav {
   margin-top: 20px;
 }
@@ -802,5 +805,41 @@ footer .copyrights {
   100% {
     opacity: 1;
     transform: rotate(-5deg);
+  }
+}
+@-moz-keyframes fadeInUpImage {
+  0% {
+    transform: translate(-10%, -10%);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeInUpImage {
+  0% {
+    transform: translate(-10%, -10%);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadeInUpImage {
+  0% {
+    transform: translate(-10%, -10%);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeInUpImage {
+  0% {
+    transform: translate(-10%, -10%);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
