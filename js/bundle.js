@@ -474,7 +474,6 @@ $(document).ready(function () {
     $('.right-navigation').click(function () {
         owl.trigger('prev.owl.carousel', [300]);
     });
-    console.log('ready')
 });
 window.addEventListener('load', function () {
     handleResize(); // First draw
