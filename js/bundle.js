@@ -476,8 +476,7 @@ $(document).ready(function () {
     });
     console.log('ready')
 });
-window.addEventListener('load', (event) => {
-    console.log('loaded')
+window.addEventListener('load', function () {
     handleResize(); // First draw
     createjs.Ticker.addEventListener('tick',stage);
     createjs.Ticker.framerate = 60;
