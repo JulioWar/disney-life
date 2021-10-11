@@ -111,11 +111,11 @@ var initHeader = function (context, width, height) {
         );
         createjs.Tween.get(headerShapes.yellowShapePoints.point3)
             .wait(700)
-            .to(point3, 500);
+            .to(point3, 500, createjs.Ease.linear);
 
         createjs.Tween.get(headerShapes.yellowShapePoints.point2)
             .wait(1100)
-            .to(point2, 500);
+            .to(point2, 500, createjs.Ease.linear);
         stage.addChild(headerShapes.yellowShape);
     } else {
         updatePoints(
@@ -150,11 +150,11 @@ var initHeader = function (context, width, height) {
             [point1, point1, {x:0, y: 0}]
         );
         createjs.Tween.get(headerShapes.blueShapePoints.point3)
-            .to(point3, 600)
+            .to(point3, 600, createjs.Ease.linear)
             .call(showContent);
         createjs.Tween.get(headerShapes.blueShapePoints.point2)
             .wait(700)
-            .to(point2, 400);
+            .to(point2, 400, createjs.Ease.linear);
         stage.addChild(headerShapes.blueShape);
     } else {
         updatePoints(
@@ -203,10 +203,10 @@ var initHeader = function (context, width, height) {
         headerShapes.redShape.graphics.closePath();
 
         createjs.Tween.get(headerShapes.redShapePoints.point2)
-            .to(point2, 400);
+            .to(point2, 400, createjs.Ease.linear);
         createjs.Tween.get(headerShapes.redShapePoints.point3)
             .wait(500)
-            .to(point3, 400);
+            .to(point3, 400, createjs.Ease.linear);
 
         stage.addChild(headerShapes.redShape);
     } else {
@@ -467,8 +467,6 @@ $(document).ready(function () {
         }
     });
 
-    handleResize(); // First draw
-    createjs.Ticker.addEventListener('tick',stage);
     $('.left-navigation').click(function () {
         owl.trigger('next.owl.carousel');
     });
@@ -476,4 +474,11 @@ $(document).ready(function () {
     $('.right-navigation').click(function () {
         owl.trigger('prev.owl.carousel', [300]);
     });
+    console.log('ready')
+});
+window.addEventListener('load', (event) => {
+    console.log('loaded')
+    handleResize(); // First draw
+    createjs.Ticker.addEventListener('tick',stage);
+    createjs.Ticker.framerate = 60;
 });
